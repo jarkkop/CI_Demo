@@ -32,9 +32,6 @@
 				<version>1.1.1</version>
 				<configuration>
 					<imageName>ci_demo_pipe</imageName>
-					<dockerHost>https://192.168.99.100:2376</dockerHost>
-					<dockerCertPath>C:\Users\ett15214\.docker\machine\machines\default</dockerCertPath>
-					<dockerDirectory>C:\Users\ett15214\eclipse-workspace-android\ci_demo_pipe\target\docker</dockerDirectory>
 					<baseImage>java</baseImage>
 					<entryPoint>["java", "-cp", "/${project.build.finalName}.jar",
 						"test.CI_Demo.App"]</entryPoint>
@@ -49,7 +46,52 @@
 					</resources>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>test.CI_Demo.App</mainClass>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+					<additionalClasspathElements>
+						<additionalClasspathElement>${project.build.basedir}//classes</additionalClasspathElement>
+					</additionalClasspathElements>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/classes/
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/config</directory>
+			</resource>
+		</resources>
 	</build>
 
 
