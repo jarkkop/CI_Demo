@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>test</groupId>
-	<artifactId>CI_Demo</artifactId>
+	<artifactId>ci_demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>CI_Demo</name>
+	<name>ci_demo</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -33,8 +33,7 @@
 				<configuration>
 					<imageName>ci_demo_pipe</imageName>
 					<baseImage>java</baseImage>
-					<entryPoint>["java", "-cp", "/${project.build.finalName}.jar",
-						"test.CI_Demo.App"]</entryPoint>
+					<entryPoint>["java", "-cp", "/${project.build.finalName}.jar", "test.ci_demo.App"]</entryPoint>
 					<!-- copy the service's jar file from target into the root directory 
 						of the image -->
 					<resources>
@@ -53,7 +52,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>test.CI_Demo.App</mainClass>
+							<mainClass>test.ci_demo.App</mainClass>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 						</manifest>
@@ -81,10 +80,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 		<resources>

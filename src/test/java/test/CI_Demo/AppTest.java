@@ -1,4 +1,4 @@
-package test.CI_Demo;
+package test.ci_demo;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
