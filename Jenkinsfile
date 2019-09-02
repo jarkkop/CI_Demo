@@ -3,7 +3,7 @@ node{
     git 'https://github.com/jarkkop/CI_Demo'
   }
   stage('Compile-Package'){
-    sh 'mvn package'
+    bat 'mvn package'
   }
 
 }
