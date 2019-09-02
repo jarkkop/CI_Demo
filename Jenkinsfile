@@ -13,7 +13,7 @@ node{
     mail bcc: '', body: '''Hi
 This is jenkins mail notification
 Regards 
-Jarkko''', cc: '', from: '', replyTo: '', subject: 'Jenkins mail', to: 'jarkko.sw.pesonen'
+Jarkko''', cc: '', from: '', replyTo: '', subject: 'Jenkins mail', to: 'jarkko.sw.pesonen@gmail.com'
   }
 
 }
