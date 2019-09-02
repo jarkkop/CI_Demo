@@ -9,5 +9,11 @@ node{
 //    sh "${mvnHome}/bin/mvn package"    //Linux
 //    bat 'mvn package'                 //Windows
   }
+  stage('eMail notification'){
+    mail bcc: '', body: '''Hi
+This is jenkins mail notification
+Regards 
+Jarkko''', cc: '', from: '', replyTo: '', subject: 'Jenkins mail', to: 'jarkko.sw.pesonen'
+  }
 
 }
