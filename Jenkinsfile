@@ -16,4 +16,10 @@ Regards
 Jarkko''', cc: '', from: '', replyTo: '', subject: 'Jenkins mail', to: 'jarkko.sw.pesonen@gmail.com'
   }
 
+  stage('Slack') {
+    slackSend channel: '#jenkins-pipeline-demo', 
+      color: 'good', 
+      message: 'Welcome to jenkins. Here is mesage to you Slack', 
+      tokenCredentialId: 'slack-pipedemo'
+  }
 }
