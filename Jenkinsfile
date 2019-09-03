@@ -9,6 +9,14 @@ node{
 //    sh "${mvnHome}/bin/mvn package"    //Linux
 //    bat 'mvn package'                 //Windows
   }
+  
+  stage('SonarQube Analysis'){
+    def mvnHome = tool name: 'Maven_3.6.0', type: 'maven'
+    withSonarQubeEnv('sonar-1') {
+      sh "${mvnHome}/bin/mvn sonar:sonar"
+    }
+  }
+  
   stage('eMail notification'){
     mail bcc: '', body: '''Hi
 This is jenkins mail notification
