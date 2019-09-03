@@ -12,7 +12,8 @@ node{
   stage('SonarQube Analysis'){
     def mvnHome = tool name: 'Maven_3.6.0', type: 'maven'
     withSonarQubeEnv('sonar-1') {
-      sh "${mvnHome}/bin/mvn sonar:sonar"
+//      sh "${mvnHome}/bin/mvn sonar:sonar"   //Linux
+      bat "${mvnHome}/bin/mvn sonar:sonar"    //Windows
     }
   }
   stage('eMail notification'){
